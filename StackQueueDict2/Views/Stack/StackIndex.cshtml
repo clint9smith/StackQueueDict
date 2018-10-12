@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "StackIndex";
+}
+
+<h2>StackIndex</h2>
+
+<div>
+    <a href="@Url.Action("Index", "Home")" class="w3-bar-item w3-button">Return to Main Menu</a>
+</div>
+<ol>
+    <li>
+        <a href="@Url.Action("AddItem", "Stack")" class="w3-bar-item w3-button">Add Item to Stack</a>
+    </li>
+    <li>
+        <a href="@Url.Action("AddHuge", "Stack")" class="w3-bar-item w3-button">Add Huge List to Stack</a>
+    </li>
+    <li>
+        @if (ViewBag.Display != null)
+        {
+            @Html.Raw((String)ViewBag.Display)
+        }
+        else
+        {
+            <a href="@Url.Action("DisplayStack", "Stack")" class="w3-bar-item w3-button">Toggle Display</a>
+        }
+    </li>
+    <li>
+        <a href="@Url.Action("DeleteFromStack", "Stack")" class="w3-bar-item w3-button">Delete from Stack</a>
+    </li>
+    <li>
+        <a href="@Url.Action("ClearStack", "Stack")" class="w3-bar-item w3-button">Clear Stack</a>
+    </li>
+    <li>
+        <a href="@Url.Action("SearchStack", "Stack")" class="w3-bar-item w3-button">Search Stack</a>
+    </li>
+</ol>
+@if (ViewBag.StopWatch != null)
+{
+    @Html.Raw((String)ViewBag.StopWatch)
+}
+@if (ViewBag.StackViewBag != null)
+{
+    foreach (var sData in ViewBag.StackViewBag)
+    {
+        <p>@sData</p>
+    }
+}
+@Html.Raw((String)ViewBag.Output)
